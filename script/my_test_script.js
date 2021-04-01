@@ -1,35 +1,20 @@
-let myheading = document.querySelector('h1');
-let mybutton = document.querySelector('button');
+myButton = document.querySelector('button')
+myImage = document.querySelector('img')
+myHeading = document.querySelector('h1')
 
-function setUserName() {
-    let myname = prompt('请输入你的名字: ');
-    if(!myname || myname === null) {
-        setUserName();
+myButton.onclick = function() {
+    myImage.setAttribute('src', 'image/new_family.png')
+    myHeading.textContent = 'Our Family Now'
+}
+
+myImage.onclick = function() {
+    let mySrc = myImage.getAttribute('src');
+    if(mySrc === 'image/mom_and_dad.png') {
+      myImage.setAttribute('src', 'image/new_family.png');
+      myHeading.textContent = 'Our Family Now';
     } else {
-        localStorage.setItem('name', myname)
-    myheading.textContent = 'Mom and Dad   ' + myname;
-    }  
-
-}
-if(!localStorage.getItem('name')) {
-    setUserName();
-} else {
-    let storedName = localStorage.getItem('name');
-    myheading.textContent = 'Mom and Dad   ' + storedName;
-}
-mybutton.onclick = function() {
-    setUserName();
-}
-
-
-let myimage = document.querySelector('img');
-myimage.onclick = function () {
-    let mysrc = myimage.getAttribute('src');
-    if(mysrc === 'image/mom_and_dad.jpg'){
-        myimage.setAttribute('src', 'image/family.jpg');
-    } else {
-        myimage.setAttribute('src', 'image/mom_and_dad.jpg');
+      myImage.setAttribute('src', 'image/mom_and_dad.png');
+      myHeading.textContent = 'Mom and Dad 20 Years ago';
     }
 }
-
 
